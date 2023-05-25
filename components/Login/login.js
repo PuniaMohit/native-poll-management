@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useNavigation } from '@react-navigation/native';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { signInValidateForm } from '../../utils/formValidate';
-import { signInHandleBlur } from '../../utils/formValidate';
-import { login } from '../../redux/login/actions/login';
+// import { signInValidateForm } from '../../utils/formValidate';
+// import { signInHandleBlur } from '../../utils/formValidate';
+// import { login } from '../../redux/login/actions/login';
 import styles from './loginStyles'; // Import your custom styles
 
 const LoginPage = () => {
