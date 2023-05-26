@@ -1,21 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: '100%',
-    backgroundColor: '#f6f9ff',
-    paddingTop: '5%',
+    height: "100%",
+    backgroundColor: "#f6f9ff",
   },
   signupForm: {
-    margin: 0,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: '25%',
-    flexDirection: 'column',
+    marginTop: 200,
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "75%",
+    flexDirection: "column",
     padding: 20,
-    backgroundColor: 'white',
-    shadowColor: '#000',
+    backgroundColor: "white",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 4,
@@ -26,11 +24,12 @@ const styles = StyleSheet.create({
   },
   heading: {
     marginBottom: 15,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20,
+    color:'#33cc33',
   },
   formGroup: {
-    marginBottom: 10,
+    marginBottom: 5,
   },
   label: {
     marginBottom: 5,
@@ -40,32 +39,43 @@ const styles = StyleSheet.create({
   input: {
     padding: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: "gray",
   },
   submitButton: {
-    color: 'white',
+    color: "white",
     borderWidth: 0,
     padding: 10,
     fontSize: 18,
-    cursor: 'pointer',
-    width: '100%',
-    backgroundColor: '#007bff',
-    marginTop: 10,
+    cursor: "pointer",
+    width: "100%",
+    backgroundColor: "#33cc33",
+    marginTop: 1,
     borderRadius: 5,
-    textAlign: 'center',
+    marginBottom: 10,
+  },
+  buttonText: {
+    textAlign: "center",
   },
   errorMessage: {
-    color: 'red',
+    color: "red",
     fontSize: 12,
   },
   navigateSignup: {
     marginLeft: 5,
-    color: '#007bff',
-    cursor: 'pointer',
+    color: "#007bff",
+    cursor: "pointer",
   },
   signinMessage: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 5,
+  },
+  signupLinkContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  signupLink: {},
+  signupLinkText: {
+    color: "blue",
   },
 });
 

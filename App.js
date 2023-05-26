@@ -1,21 +1,14 @@
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginPage from './components/Login/login';
-
-
+import LoginPage from "./components/Login/login";
+import { Text, View } from "react-native";
+import { Provider } from "react-redux";
+import store from "./store";
 
 export default function App() {
-  // const Stack = createNativeStackNavigator();
-
   return (
-    // <NavigationContainer>
-      {/* <Stack.Navigator> */}
-        // <Stack.Screen name="Login" component={LoginPage} />
-        <LoginPage/>
-
-      // </Stack.Navigator>
-    // </NavigationContainer>
+    <View>
+      <Provider store={store}>
+        <LoginPage />
+      </Provider>
+    </View>
   );
 }
-
-
