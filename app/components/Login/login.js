@@ -10,6 +10,7 @@ import { Link } from 'expo-router'
 import {  useRouter } from "expo-router";
 
 
+
 const LoginPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -99,7 +100,7 @@ const LoginPage = () => {
             style={styles.signupLink}
           >
             <Text  onPress={() => {
-          router.replace("/newpage");
+          router.replace("/components/Signup/signUp");
         }}style={styles.signupLinkText}>SignUp</Text>
           </TouchableOpacity>
         </View>
