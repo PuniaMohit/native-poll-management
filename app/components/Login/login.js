@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Pressable } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { signInValidateForm } from "../../utils/formValidate";
-import { signInHandleBlur } from "../../utils/formValidate";
-import { login } from "../../redux/login/actions/login";
+import { signInValidateForm } from "../../../utils/formValidate";
+import { signInHandleBlur } from "../../../utils/formValidate";
+import { login } from "../../../redux/login/actions/login";
 import styles from "./loginStyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Link } from 'expo-router'
+import {  useRouter } from "expo-router";
+
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const successOrErrorMessage = useSelector((state) => state.login);
   const [formData, setFormData] = useState({
     email: "",
@@ -79,7 +83,6 @@ const LoginPage = () => {
             placeholder="Enter your password"
           />
         </View>
-
         <Text style={styles.errorMessage}>{formErrors.passwordError}</Text>
         <TouchableOpacity
           style={styles.submitButton}
@@ -94,9 +97,10 @@ const LoginPage = () => {
           <Text style={styles.signupLink}>No Account?</Text>
           <TouchableOpacity
             style={styles.signupLink}
-            // onPress={() => navigation.navigate('Signup')}..commented as will use later
           >
-            <Text style={styles.signupLinkText}>SignUp</Text>
+            <Text  onPress={() => {
+          router.replace("/newpage");
+        }}style={styles.signupLinkText}>SignUp</Text>
           </TouchableOpacity>
         </View>
       </View>
