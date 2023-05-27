@@ -30,16 +30,16 @@ export const signInValidateForm = (
   }
 };
 
-export const signInHandleBlur = (value, name, formErrors, setFormErrors) => {
-  // const { name, value } = event.target;
+export const signInHandleBlur = (formData, name, formErrors, setFormErrors) => {
   let newFormErrors = { ...formErrors };
   if (name === "password") {
-    newFormErrors.passwordError = !passwordRegex.test(value)
+    newFormErrors.passwordError = !passwordRegex.test(formData.password)
       ? "min. 8 characters, one uppercase letter, lowercase letter, number, special character"
       : "";
   } else if (name === "email") {
-    newFormErrors.emailError = !emailRegex.test(value) ? "Invalid email" : "";
+    newFormErrors.emailError = !emailRegex.test(formData.email)
+      ? "Invalid email"
+      : "";
   }
   setFormErrors(newFormErrors);
 };
-

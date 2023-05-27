@@ -21,10 +21,9 @@ const LoginPage = () => {
   const submit = (event) => {
     signInValidateForm(event, formData, setFormErrors, dispatch, login);
   };
-  const handleBlur = (value, name) => {
-    signInHandleBlur(value, name, formErrors, setFormErrors);
+  const handleBlur = (name) => {
+    signInHandleBlur(formData, name, formErrors, setFormErrors);
   };
-
   const inputValueChange = (text, event) => {
     setFormData({ ...formData, [event]: text });
   };
@@ -63,7 +62,7 @@ const LoginPage = () => {
           <TextInput
             style={styles.input}
             name="email"
-            onEndEditing={(text) => handleBlur(text, "email")}
+            onBlur={() => handleBlur("email")}
             onChangeText={(text) => inputValueChange(text, "email")}
             placeholder="Enter your email address"
           />
@@ -75,11 +74,12 @@ const LoginPage = () => {
             style={styles.input}
             secureTextEntry
             name="password"
-            onEndEditing={(text) => handleBlur(text, "password")}
+            onBlur={() => handleBlur("password")}
             onChangeText={(text) => inputValueChange(text, "password")}
             placeholder="Enter your password"
           />
         </View>
+
         <Text style={styles.errorMessage}>{formErrors.passwordError}</Text>
         <TouchableOpacity
           style={styles.submitButton}
