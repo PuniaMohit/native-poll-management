@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, Picker } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { signUpValidateForm } from '../../../utils/formValidate';
 import { signUpHandleBlur } from '../../../utils/formValidate';
 import { register } from '../../../redux/signup/actions/signUp';
 import { CaretDownFill } from 'react-bootstrap-icons';
+import styles from "./signUpStyles";
 
 const SignUpPage = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const role = useSelector((state) => state.roleList.roleList);
-  const successOrErrorMessage = useSelector((state) => state.signUp);
+  // const role = useSelector((state) => state.roleList.roleList);
+  // const successOrErrorMessage = useSelector((state) => state.signUp);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -39,17 +40,17 @@ const SignUpPage = () => {
     signUpHandleBlur(name, formErrors, setFormErrors);
   };
 
-  useEffect(() => {
-    if (successOrErrorMessage.userRegister) {
-      navigation.replace('/');
-    } else if (successOrErrorMessage.error) {
-      setFormErrors((prevState) => ({
-        ...prevState,
-        emailError: 'Repeated Email',
-      }));
-    }
-    dispatch(roleList());
-  }, [successOrErrorMessage]);
+  // useEffect(() => {
+  //   if (successOrErrorMessage.userRegister) {
+  //     navigation.replace('/');
+  //   } else if (successOrErrorMessage.error) {
+  //     setFormErrors((prevState) => ({
+  //       ...prevState,
+  //       emailError: 'Repeated Email',
+  //     }));
+  //   }
+  //   dispatch(roleList());
+  // }, [successOrErrorMessage]);
 
   return (
     <View style={styles.container}>
@@ -100,7 +101,7 @@ const SignUpPage = () => {
       />
       <Text style={styles.errorMessage}>{formErrors.emailError}</Text>
     </View>
-    <View style={styles.formGroup}>
+    {/* <View style={styles.formGroup}>
       <Text>Role</Text>
       <CaretDownFill style={styles.caretIcon} />
       <Picker
@@ -119,7 +120,7 @@ const SignUpPage = () => {
         ))}
       </Picker>
       <Text style={styles.errorMessage}>{formErrors.roleError}</Text>
-    </View>
+    </View> */}
     <TouchableOpacity
       style={styles.button}
       onPress={submit}
