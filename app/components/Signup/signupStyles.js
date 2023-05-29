@@ -2,13 +2,14 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#f6f9ff",
-    paddingTop: "5%",
+    height: "100%",
   },
   signupForm: {
-    margin: "auto",
-    width: "25%",
+    marginTop: 80,
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "75%",
     flexDirection: "column",
     padding: 20,
     backgroundColor: "white",
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 15,
     textAlign: "center",
+    color: "#33cc33",
   },
   formGroup: {
     flexDirection: "column",
@@ -34,18 +36,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "gray",
   },
-  button: {
-    backgroundColor: "#007bff",
-    color: "white",
+  submitButton: {
     borderWidth: 0,
     padding: 10,
-    fontSize: 16,
-    textAlign: "center",
+    fontSize: 18,
+    cursor: "pointer",
     width: "100%",
+    backgroundColor: "#33cc33",
+    marginTop: 1,
+    borderRadius: 5,
+    marginBottom: 10,
   },
   buttonText: {
     color: "white",
     fontSize: 16,
+    textAlign: "center",
   },
   errorMessage: {
     color: "red",
@@ -55,21 +60,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10,
   },
-  signInLink: {
-    marginLeft: 5,
-    color: "#007bff",
-    cursor: "pointer",
-  },
   signInText: {
+    marginLeft: 5,
     fontSize: 14,
+    color: "blue",
   },
-  role: {
-    position: "relative",
-  },
-  caretIcon: {
-    position: "absolute",
-    top: "55%",
-    right: "5%",
+  dropdown: {
+    height: 40,
+    paddingLeft: 10,
+    backgroundColor: "transparent",
+    borderColor: "gray",
+    borderWidth: "1px",
   },
 });
 

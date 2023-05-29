@@ -43,10 +43,37 @@ export const signInHandleBlur = (formData, name, formErrors, setFormErrors) => {
   }
   setFormErrors(newFormErrors);
 };
+export const signUpHandleBlur = (formData, name, formErrors, setFormErrors) => {
+  let newFormErrors = { ...formErrors };
+  if (name === "firstName") {
+    newFormErrors.firstNameError = !nameRegex.test(formData.firstName)
+      ? "First name must be at least 4 characters"
+      : "";
+  } else if (name === "lastName") {
+    newFormErrors.lastNameError = !nameRegex.test(formData.lastName)
+      ? "Last name must be at least 4 characters"
+      : "";
+  } else if (name === "password") {
+    newFormErrors.passwordError = !passwordRegex.test(formData.password)
+      ? "min. 8 characters, one uppercase letter, lowercase letter, number, special character"
+      : "";
+  } else if (name === "email") {
+    newFormErrors.emailError = !emailRegex.test(formData.email)
+      ? "Invalid email"
+      : "";
+  }
+  newFormErrors.roleError =
+    formData.roleId === "" ? "Role must be selected" : "";
+  setFormErrors(newFormErrors);
+};
 
-
-export const signUpValidateForm = (event,formData, setFormErrors, dispatch, register) => {
-  event.preventDefault();
+export const signUpValidateForm = (
+  formData,
+  setFormErrors,
+  dispatch,
+  register
+) => {
+  // event.preventDefault();
   const { firstName, lastName, password, email, roleId } = formData;
   const errors = {};
   if (!firstName) {
@@ -78,32 +105,3 @@ export const signUpValidateForm = (event,formData, setFormErrors, dispatch, regi
     dispatch(register(formData));
   }
 };
-
-
-
-export const signUpHandleBlur=(event, formErrors, setFormErrors)=>{
-const { name, value } = event.target;
-let newFormErrors = { ...formErrors };
-if (name === "firstName") {
-  newFormErrors.firstNameError = !nameRegex.test(value)
-    ? "First name must be at least 4 characters"
-    : "";
-} else if (name === "lastName") {
-  newFormErrors.lastNameError = !nameRegex.test(value)
-    ? "Last name must be at least 4 characters"
-    : "";
-} else if (name === "password") {
-  newFormErrors.passwordError = !passwordRegex.test(value)
-    ? "min. 8 characters, one uppercase letter, lowercase letter, number, special character"
-    : ""
-} else if (name === "email") {
-  newFormErrors.emailError = !emailRegex.test(value) ? "Invalid email" : "";
-} else {
-  newFormErrors.roleError =
-    value === "0" ? "Role must be selected" : "";
-}
-setFormErrors(newFormErrors);
-};
-
-
-

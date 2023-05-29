@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Pressable,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { signInValidateForm } from "../../../utils/formValidate";
 import { signInHandleBlur } from "../../../utils/formValidate";
 import { login } from "../../../redux/login/actions/login";
 import styles from "./loginStyles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Link } from 'expo-router'
-import {  useRouter } from "expo-router";
 
-
-
-const LoginPage = () => {
+const LoginPage = ({ navigation }) => {
   const dispatch = useDispatch();
-  const router = useRouter();
   const successOrErrorMessage = useSelector((state) => state.login);
   const [formData, setFormData] = useState({
     email: "",
@@ -40,7 +41,7 @@ const LoginPage = () => {
           await AsyncStorage.setItem("user", JSON.stringify(user));
           console.log("stored"); //console just to show data is stored
         } catch (error) {
-          console.log("async error", error); // console just to show error
+          "async error", error; // console just to show error
         }
       };
       fetchData();
@@ -96,12 +97,15 @@ const LoginPage = () => {
         </TouchableOpacity>
         <View style={styles.signupLinkContainer}>
           <Text style={styles.signupLink}>No Account?</Text>
-          <TouchableOpacity
-            style={styles.signupLink}
-          >
-            <Text  onPress={() => {
-          router.replace("/components/Signup/signUp");
-        }}style={styles.signupLinkText}>SignUp</Text>
+          <TouchableOpacity style={styles.signupLink}>
+            <Text
+              onPress={() => {
+                navigation.navigate("SignUp");
+              }}
+              style={styles.signupLinkText}
+            >
+              SignUp
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

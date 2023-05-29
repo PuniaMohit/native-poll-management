@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
     fontSize: 20,
-    color:'#33cc33',
+    color: "#33cc33",
   },
   formGroup: {
     marginBottom: 5,
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     borderColor: "gray",
   },
   submitButton: {
-    color: "white",
     borderWidth: 0,
     padding: 10,
     fontSize: 18,
@@ -55,6 +54,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
+    color: "white",
   },
   errorMessage: {
     color: "red",
