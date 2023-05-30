@@ -39,9 +39,8 @@ const LoginPage = ({ navigation }) => {
       const fetchData = async () => {
         try {
           await AsyncStorage.setItem("user", JSON.stringify(user));
-          console.log("stored"); //console just to show data is stored
+          navigation.navigate("PollList")
         } catch (error) {
-          "async error", error; // console just to show error
         }
       };
       fetchData();
