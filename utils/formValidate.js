@@ -63,11 +63,6 @@ export const signUpHandleBlur = (formData, name, formErrors, setFormErrors) => {
       ? "Invalid email"
       : "";
   }
-  if (formData.roleId) {
-    newFormErrors.roleError = "";
-  } else {
-    newFormErrors.roleError = "Role must be selected";
-  }
   setFormErrors(newFormErrors);
 };
 
@@ -77,7 +72,6 @@ export const signUpValidateForm = (
   dispatch,
   register
 ) => {
-  // event.preventDefault();
   const { firstName, lastName, password, email, roleId } = formData;
   const errors = {};
   if (!firstName) {

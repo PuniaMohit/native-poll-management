@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { View, TextInput, Text, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { signUpValidateForm } from "../../../utils/formValidate";
-import { signUpHandleBlur } from "../../../utils/formValidate";
+import {
+  signUpHandleBlur,
+  signUpValidateForm,
+} from "../../../utils/formValidate";
 import {
   register,
   removeSuccessSignUpMessage,
@@ -16,7 +18,7 @@ import { Dropdown } from "react-native-element-dropdown";
 const SignUpPage = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const role = useSelector((state) => state.roleList.roleList);
+  const roles = useSelector((state) => state.roleList.roleList);
   const successOrErrorMessage = useSelector((state) => state.signUp);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -111,10 +113,10 @@ const SignUpPage = () => {
           <Dropdown
             style={styles.dropdown}
             data={
-              role.length === 0
+              roles.length === 0
                 ? []
                 : [
-                    ...role.map((element) => {
+                    ...roles.map((element) => {
                       return { label: element.name, value: element.id };
                     }),
                   ]
@@ -123,11 +125,10 @@ const SignUpPage = () => {
             placeholder={
               formData.roleId === ""
                 ? "Select Item"
-                : role.find((element) => formData.roleId === element.id)
+                : roles.find((element) => formData.roleId === element.id)
                     ?.name || ""
             }
             value={formData.roleId}
-            onBlur={() => handleBlur("roleId")}
             onChange={(item) => {
               setFormData((prevData) => ({ ...prevData, roleId: item.value }));
             }}
