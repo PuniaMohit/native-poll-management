@@ -32,7 +32,6 @@ const SignUpPage = () => {
     emailError: "",
     roleError: "",
   });
-
   const submit = () => {
     signUpValidateForm(formData, setFormErrors, dispatch, register);
   };
@@ -121,11 +120,12 @@ const SignUpPage = () => {
                   ]
             }
             labelField="label"
-            // valueField="value"
             placeholder={
-              formData.roleId === "" ? "Select Item" : formData.roleId
+              formData.roleId === ""
+                ? "Select Item"
+                : role.find((element) => formData.roleId === element.id)
+                    ?.name || ""
             }
-            // searchPlaceholder="Search..."
             value={formData.roleId}
             onBlur={() => handleBlur("roleId")}
             onChange={(item) => {

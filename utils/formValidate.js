@@ -43,6 +43,7 @@ export const signInHandleBlur = (formData, name, formErrors, setFormErrors) => {
   }
   setFormErrors(newFormErrors);
 };
+
 export const signUpHandleBlur = (formData, name, formErrors, setFormErrors) => {
   let newFormErrors = { ...formErrors };
   if (name === "firstName") {
@@ -62,8 +63,11 @@ export const signUpHandleBlur = (formData, name, formErrors, setFormErrors) => {
       ? "Invalid email"
       : "";
   }
-  newFormErrors.roleError =
-    formData.roleId === "" ? "Role must be selected" : "";
+  if (formData.roleId) {
+    newFormErrors.roleError = "";
+  } else {
+    newFormErrors.roleError = "Role must be selected";
+  }
   setFormErrors(newFormErrors);
 };
 
