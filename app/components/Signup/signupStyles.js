@@ -2,11 +2,11 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
     backgroundColor: "#f6f9ff",
+    height: "100%",
   },
   signupForm: {
-    marginTop: 200,
+    marginTop: 80,
     marginLeft: "auto",
     marginRight: "auto",
     width: "75%",
@@ -19,22 +19,17 @@ const styles = StyleSheet.create({
       height: 4,
     },
     shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 6,
+    shadowRadius: 6,
+    elevation: 10,
   },
-  heading: {
+  title: {
     marginBottom: 15,
     textAlign: "center",
-    fontSize: 20,
     color: "#33cc33",
   },
   formGroup: {
-    marginBottom: 5,
-  },
-  label: {
-    marginBottom: 5,
-    fontSize: 16,
-    marginTop: 5,
+    flexDirection: "column",
+    marginBottom: 10,
   },
   input: {
     padding: 10,
@@ -53,29 +48,29 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonText: {
-    textAlign: "center",
     color: "white",
+    fontSize: 16,
+    textAlign: "center",
   },
   errorMessage: {
     color: "red",
     fontSize: 12,
   },
-  navigateSignup: {
-    marginLeft: 5,
-    color: "#007bff",
-    cursor: "pointer",
-  },
-  signinMessage: {
-    textAlign: "center",
-    marginTop: 5,
-  },
-  signupLinkContainer: {
+  signInContainer: {
     flexDirection: "row",
-    justifyContent: "center",
+    marginTop: 10,
   },
-  signupLink: {},
-  signupLinkText: {
+  signInText: {
+    marginLeft: 5,
+    fontSize: 14,
     color: "blue",
+  },
+  dropdown: {
+    height: 40,
+    paddingLeft: 10,
+    backgroundColor: "transparent",
+    borderColor: "gray",
+    borderWidth: "1px",
   },
 });
 
