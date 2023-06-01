@@ -12,7 +12,7 @@ import {
   removeErrorSignUpMessage,
 } from "../../../redux/signup/actions/signUp";
 import roleList from "../../../redux/rolelist/actions/roleList";
-import styles from "./signUpStyles";
+import styles from "./signupStyles";
 import { Dropdown } from "react-native-element-dropdown";
 
 const SignUpPage = () => {
