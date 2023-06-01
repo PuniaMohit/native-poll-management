@@ -7,6 +7,7 @@ import {
   Text,
   Button,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import pollList from "../../../redux/pollList/actions/pollList";
 import Header from "../Header/header";
@@ -21,67 +22,87 @@ const PollList = () => {
   const user = useSelector((state) => state.login.user);
   const dispatch = useDispatch();
 
+  const [radioButtonArray, setRadioButtonArray] = useState([]);
+
   const [pageNumberLimit, setPageNumberLimit] = useState({
     pageNumber: 1,
     limit: 4,
   });
-
+  console.log(radioButtonArray);
   useEffect(() => {
     dispatch(pollList(pageNumberLimit));
   }, [pageNumberLimit]);
+
+  useEffect(() => {
+    if (pollQuestions) {
+      const updatedRadioButtonArray = pollQuestions.map((pollQuestion) => {
+        return pollQuestion.optionList.map((option, index) => ({
+          label: [
+            option.optionTitle,
+            "    ",
+            option.voteCount.length + "  Votes",
+          ],
+          value: option.id,
+        }));
+      });
+      setRadioButtonArray(updatedRadioButtonArray);
+    }
+  }, [pollQuestions]);
 
   return (
     <View>
       <Header />
       <View style={pollListStyles.containerAddPollButton}>
         {user && user.user.roleId === 1 && (
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            style={pollListStyles.addPollButton}
+            onPress={() => {}}
+          >
             <Text style={pollListStyles.showMoreButtonText}>Add Poll</Text>
           </TouchableOpacity>
         )}
       </View>
-      <View style={pollListStyles.container}>
-        {pollQuestions &&
-          pollQuestions.map((pollQuestion, index) => (
-            <View key={pollQuestion.id}>
-              <View style={pollListStyles.title}>
-                <Text style={pollListStyles.pollTitle}>
-                  {index + 1}. {pollQuestion.title}
-                </Text>
-                {user && user.user.roleId === 1 && (
-                  <View style={pollListStyles.editButtons}>
-                    {/* commented for further reference */}
-                    {/* <Button
+      <ScrollView>
+        <View>
+          {pollQuestions &&
+            pollQuestions.map((pollQuestion, index) => (
+              <View
+                key={pollQuestion.id}
+                style={pollListStyles.containerPollList}
+              >
+                <View style={pollListStyles.title}>
+                  <Text style={pollListStyles.pollTitle}>
+                    {index + 1}. {pollQuestion.title}
+                  </Text>
+                  {user && user.user.roleId === 1 && (
+                    <View style={pollListStyles.editButtons}>
+                      {/* commented for further reference */}
+                      {/* <Button
                   title="Delete"
                   onPress={() => handleDeletePoll(pollQuestion.id)}
                 /> */}
+                    </View>
+                  )}
+                  <View style={pollListStyles.radioContainer}>
+                    <View>
+                      <RadioForm
+                        buttonSize={10}
+                        radio_props={radioButtonArray[index]}
+                        initial={0}
+                        onPress={(value) => {}}
+                      />
+                    </View>
                   </View>
-                )}
+                </View>
               </View>
-              {pollQuestion.optionList.map((option) => {
-                return (
-                  <View style={pollListStyles.radioContainer} key={option.id}>
-                    <RadioForm
-                      buttonSize={10}
-                      radio_props={[
-                        { label: option.optionTitle, value: option.id },
-                      ]}
-                      // onPress={(value) => {}}...commented for later use
-                    />
-                    <Text style={pollListStyles.voteCount}>
-                      {option.voteCount.length} Votes
-                    </Text>
-                  </View>
-                );
-              })}
+            ))}
+          {loading && (
+            <View>
+              <ActivityIndicator size="large" />
             </View>
-          ))}
-        {loading && (
-          <View>
-            <ActivityIndicator size="large" />
-          </View>
-        )}
-        <View style={pollListStyles.containerAddPollButton}>
+          )}
+        </View>
+        <View style={pollListStyles.containerAddMoreButton}>
           <TouchableOpacity
             style={
               addedDataArrayLength < 4
@@ -96,10 +117,10 @@ const PollList = () => {
               }));
             }}
           >
-            <Text style={pollListStyles.showMoreButtonText}>Show More</Text>
+            <Text style={pollListStyles.showMoreButtonText}>More</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };

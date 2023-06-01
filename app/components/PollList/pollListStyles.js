@@ -1,30 +1,35 @@
 import { StyleSheet } from "react-native";
 
 const pollListStyles = StyleSheet.create({
-  container: {},
-  buttonContainer: {
-    display: "flex",
-    justifyContent: "flex-end",
-    width: "70%",
-  },
   containerAddPollButton: {
-    display: "flex",
+    flex: 1,
+    flexDirection: "row",
     justifyContent: "flex-end",
   },
-  navbar: {
+  addPollButton: {
     backgroundColor: "#A0CFA2",
-    marginBottom: "2%",
+    borderRadius: 5,
+    paddingTop: 1,
+    width: 80,
+    height: 20,
+    marginRight: 5,
   },
-  navbarHeader: {
-    fontSize: 24,
-    color: "white",
-    fontWeight: "700",
+  containerPollList: {
+    marginLeft: 10,
+    marginBottom: 5,
   },
-  title: {
-    display: "flex",
-    justifyContent: "flex-start",
+  radioContainer: {
+    flexDirection: "row",
     alignItems: "center",
+    marginLeft: 20,
   },
+  radioForm: {
+    flex: 1,
+  },
+  voteCount: {
+    marginLeft: 10,
+  },
+
   showAddPollButton: {
     marginRight: "2%",
     backgroundColor: "#04AA6D",
@@ -55,41 +60,28 @@ const pollListStyles = StyleSheet.create({
   radio: {
     marginLeft: "1%",
   },
-  radioContainer: {
-    display: "flex",
-  },
-  editButtons: {
-    display: "flex",
-  },
-  editButtonRadio: {
-    marginLeft: "1%",
-    color: "gray",
-    fontSize: 12,
-  },
-  editButtonPencilSquare: {
-    marginLeft: "10%",
-  },
-  voteCount: {
-    marginLeft: "1%",
+  containerAddMoreButton: {
+    marginBottom: 100,
   },
   showMorePollButton: {
-    backgroundColor: "#04AA6D",
+    backgroundColor: "#A0CFA2",
     borderRadius: 5,
-    paddingVertical: "0.5%",
-    paddingHorizontal: "2%",
-    color: "white",
-    cursor: "pointer",
-  },
-  showMorePollButtonContainer: {
-    textAlign: "center",
-    marginBottom: "2%",
+    width: 100,
+    height: 20,
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   showMoreDisabledButton: {
     backgroundColor: "gray",
     borderRadius: 5,
-    paddingVertical: "0.5%",
-    paddingHorizontal: "2%",
+    width: 100,
+    height: 20,
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+  showMoreButtonText: {
     color: "white",
+    textAlign: "center",
   },
 });
 
